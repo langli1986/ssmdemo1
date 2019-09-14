@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var id = getQuery("id");
+            $.ajax({
+                data:{id:id},
+                dataType:"json",
+                type:"get",
+                url:"/user/get",
+                success:function(data){
+                    if(data.status==200)
+                    {
+                        $("#username").val(data.user.name);
+                        $("#userid").val(data.user.id);
+                    }
+                    else {
+                        alert("系统异常，请稍后再试");
+                    }
+                }
+            });
+        })
+
+
+        function getQuery(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            //从?之后开始匹配如getQuery(courseid)返回一个数组["courseid=8","","8","&",index:0,input:"courseid=8"]
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return unescape(r[2]); return null;
+        }
+
+        function sub()
+        {
+            $.ajax({
+                data:{id:$("#userid").val(),name:$("#username").val()},
+                dataType:"json",
+                type:"get",
+                url:"/user/update",
+                success:function(data){
+                    if(data.status==200)
+                    {
+                        window.location.href="index.html";
+                    }
+                    else {
+                        alert("系统异常，请稍后再试");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <input type="hidden" id="userid" />
+    用户姓名：<input type="text" id="username" value="" />
+    <input type="button" value="确认修改" onclick="sub()">
+</body>
+</html>

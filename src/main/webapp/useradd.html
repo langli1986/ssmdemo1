@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        function add()
+        {
+            $.ajax(
+                {
+                    data:{username:$("#username").val()},
+                    dataType:"json",
+                    type:"get",
+                    url:"/user/add",
+                    success:function(data)
+                    {
+                        if(data.status==200) {
+                            window.location.href = "index.html";
+                        }
+                    }
+                }
+            );
+        }
+    </script>
+</head>
+<body>
+    用户姓名：<input type="text" id="username" />
+    <input type="button" id="sub" value="提交" onclick="add()">
+</body>
+</html>

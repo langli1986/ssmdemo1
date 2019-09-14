@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.3.3.5.css">
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/ssm.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            user.query();
+        })
+    </script>
+</head>
+<body>
+    <table class="table">
+        <caption>用户基本信息</caption>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyList">
+
+        </tbody>
+    </table>
+
+
+    <a href="useradd.html">新增用户</a>
+
+    <script id="template1" type="text/x-jquery-tmpl">
+        <tr>
+            <td>{{= id}}</td>
+            <td>{{= name}}</td>
+            <td><input type='button' value='删除' onclick='user.del({{= id}})' /><input type='button' value='修改' onclick='user.toupdatepage({{= id}})' /></td>
+        </tr>
+    </script>
+</body>
+</html>

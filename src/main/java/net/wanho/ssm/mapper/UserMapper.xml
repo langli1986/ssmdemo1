@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.wanho.ssm.mapper.UserMapper">
+    <select id="query" resultType="net.wanho.ssm.entity.User">
+        select * from t_user
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from t_user where id=#{id}
+    </delete>
+
+    <insert id="add" parameterType="String" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user(name) values(#{username})
+    </insert>
+
+    <select id="get" parameterType="int" resultType="net.wanho.ssm.entity.User">
+        select * from t_user where id=#{id}
+    </select>
+
+    <update id="update" parameterType="net.wanho.ssm.entity.User">
+        update t_user set name=#{name} where id=#{id}
+    </update>
+</mapper>
