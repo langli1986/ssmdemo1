@@ -50,7 +50,7 @@
         <quartz.version>2.2.2</quartz.version>
         <sitemesh-version>3.0.1</sitemesh-version>
         <org.version>20160212</org.version>
-        <poi.version>3.16</poi.version>
+        <poi.version>4.1.1</poi.version>
     </properties>
 
     <dependencies>
